@@ -12,9 +12,10 @@ async function call(method,path,body,token,expected=200){
  const admin=(await call('POST','/auth/login',{role:'admin',username:process.env.ADMIN_USERNAME || 'admin',password:process.env.ADMIN_PASSWORD || 'admin123'})).token;
  const user=(await call('POST','/auth/login',{role:'user',idNumber:'ID1001',lastName:'Kumar'})).token;
  const other=(await call('POST','/auth/login',{role:'user',idNumber:'ID1003',lastName:'Sharma'})).token;
- for(const p of ['/auth/me','/counters','/locations','/tokens/board','/visitors','/queue-entries','/predictions','/stats/dashboard','/queries'])await call('GET',p,null,admin);
- for(let i=1;i<=10;i++){const r=await call('GET','/queries/'+i,null,admin);if(r.source!=='mysql')throw Error('Explorer not MySQL');}
- for(const p of ['/visitors','/queue-entries','/predictions','/stats/dashboard','/queries'])await call('GET',p,null,user,403);
+ for(const p of ['/auth/me','/counters','/locations','/tokens/board','/visitors','/queue-entries','/predictions','/stats/dashboard'])await call('GET',p,null,admin);
+ await call('GET','/queries',null,admin,404);
+ await call('GET','/queries/1',null,admin,404);
+ for(const p of ['/visitors','/queue-entries','/predictions','/stats/dashboard'])await call('GET',p,null,user,403);
  await call('POST','/me/tickets',{counter_id:101,arrival_time:'12:99'},user,400);
  await call('POST','/me/tickets',{counter_id:999,arrival_time:'12:00'},user,400);
  const ticket=await call('POST','/me/tickets',{counter_id:101,arrival_time:'12:00'},user,201);

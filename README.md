@@ -49,7 +49,7 @@ The repaired local app uses `queue_intelligence_app_20261028`. The original `que
 - Visitors track and cancel their own waiting tickets. Admins operate Call Next and Done controls. Calling the next ticket atomically completes the previous calling ticket.
 - Live tickets, counters, board, dashboard, and queue refresh every ten seconds. Historical waiting records remain in history and do not occupy today's live queues.
 - Digital passes use full entry IDs, printable layouts, and real QR codes containing token and counter. A camera scanner is not included.
-- Locations, visitor directory and history drawers, queue filters, prediction charts, and all ten predefined read-only SQL queries.
+- Locations, visitor directory and history drawers, queue filters, and prediction charts. SQL Explorer has been removed from the admin interface and its API endpoints are disabled.
 - API role restrictions, mobile sign-out, built frontend routing, and database-backed `/api/health`.
 
 Predictions are a heuristic based on historical waits, peak hours, and queue length, not a trained AI model. Recommended slots are clipped to counter hours. Estimated wait is not an exact countdown. Campus ID plus last name is the original classroom authentication scheme; use stronger authentication before a public deployment.
@@ -62,7 +62,7 @@ npm --prefix client run lint
 npm run build
 ```
 
-Verified locally against MySQL 8.4.11 with 51 API assertions covering authentication, permissions, read endpoints, all ten SQL queries, creation, duplicate rejection, concurrent requests, calling, completion, cancellation, and visitor privacy. Ticket records survived a backend restart. Five regression tests cover historical queues, validation, capacity, ownership, and token uniqueness.
+Verified locally against MySQL 8.4.11 with API assertions covering authentication, permissions, read endpoints, disabled SQL Explorer routes, creation, duplicate rejection, concurrent requests, calling, completion, cancellation, and visitor privacy. Ticket records survived a backend restart. Five regression tests cover historical queues, validation, capacity, ownership, and token uniqueness.
 
 The frontend production build passes. Package audits reported zero known vulnerabilities after compatible dependency patches. Lint reports only two existing Fast Refresh organization warnings in the context modules; undefined-component and unused-variable issues were fixed.
 

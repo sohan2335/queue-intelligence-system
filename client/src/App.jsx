@@ -14,7 +14,6 @@ const Predictions = lazy(() => import('./pages/Predictions'));
 const Visitors = lazy(() => import('./pages/Visitors'));
 const JoinQueue = lazy(() => import('./pages/JoinQueue'));
 const Tokens = lazy(() => import('./pages/Tokens'));
-const QueryExplorer = lazy(() => import('./pages/QueryExplorer'));
 
 function ProtectedLayout({ children }) {
   const { user, checking } = useAuth();
@@ -69,7 +68,6 @@ function AppRoutes() {
       <Route path="/predictions" element={<AdminRoute><Predictions /></AdminRoute>} />
       <Route path="/visitors" element={<AdminRoute><Visitors /></AdminRoute>} />
       <Route path="/join-queue" element={<AdminRoute><JoinQueue /></AdminRoute>} />
-      <Route path="/query-explorer" element={<AdminRoute><QueryExplorer /></AdminRoute>} />
 
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />

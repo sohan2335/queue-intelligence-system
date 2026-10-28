@@ -10,7 +10,6 @@ import { initPool, closePool, isMock, executeQuery } from './db/pool.js';
 import authRoutes from './routes/auth.js';
 import meRoutes from './routes/me.js';
 import resourceRoutes from './routes/resources.js';
-import queryExplorerRoutes from './routes/queryExplorer.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -28,7 +27,6 @@ app.get('/api/health', async (_req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/me', meRoutes);
-app.use('/api/queries', queryExplorerRoutes);
 app.use('/api', resourceRoutes);
 
 app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found' }));

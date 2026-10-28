@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, Ticket, MapPin, ListOrdered,
-  Brain, Users, PlusCircle, Code2, Activity, LogOut
+  Brain, Users, PlusCircle, Activity, LogOut
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -16,7 +16,6 @@ export default function MobileNav() {
     { to: '/predictions',    label: 'Predict',   icon: Brain            },
     { to: '/visitors',       label: 'Visitors',  icon: Users            },
     { to: '/join-queue',     label: 'Issue',     icon: PlusCircle       },
-    { to: '/query-explorer', label: 'SQL',       icon: Code2            },
   ];
 
   const userLinks = [

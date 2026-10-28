@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard, Ticket, MapPin, ListOrdered, Brain,
-  Users, PlusCircle, Code2, Moon, Sun, Activity,
+  Users, PlusCircle, Moon, Sun, Activity,
   LogOut, User, ShieldCheck
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -19,7 +19,6 @@ export default function Sidebar() {
     { to: '/predictions',   label: 'Predictions', icon: Brain            },
     { to: '/visitors',      label: 'Visitors',    icon: Users            },
     { to: '/join-queue',    label: 'Issue Ticket',icon: PlusCircle       },
-    { to: '/query-explorer',label: 'SQL Explorer',icon: Code2            },
   ];
 
   const userLinks = [

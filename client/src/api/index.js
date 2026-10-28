@@ -46,8 +46,6 @@ export const fetchVisitors     = (p={})  => api.get('/visitors', { params: p }).
 export const fetchQueueEntries = (p={})  => api.get('/queue-entries', { params: p }).then(r => r.data);
 export const createQueueEntry  = body    => api.post('/queue-entries', body).then(r => r.data);
 export const fetchPredictions  = (p={})  => api.get('/predictions', { params: p }).then(r => r.data);
-export const fetchQueries      = ()      => api.get('/queries').then(r => r.data);
-export const runQuery          = id      => api.get(`/queries/${id}`).then(r => r.data);
 export const lookupToken       = query   => api.get(`/tokens/lookup/${encodeURIComponent(query)}`).then(r => r.data);
 export const dispenseToken     = body    => api.post('/tokens/dispense', body).then(r => r.data);
 export const updateTokenStatus = (id, s) => api.patch(`/tokens/${id}/status`, { status: s }).then(r => r.data);
