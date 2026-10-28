@@ -1,0 +1,20 @@
+{
+  "name": "queue-intelligence-system",
+  "version": "1.0.0",
+  "description": "Queue Intelligence System for College Campus",
+  "scripts": {
+    "install:server": "cd server && npm install",
+    "install:client": "cd client && npm install",
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "server": "cd server && node src/index.js",
+    "client": "cd client && npm run dev",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"cyan,magenta\" \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm run build",
+    "test": "npm --prefix server test",
+    "start": "npm --prefix server start",
+    "db:setup": "npm --prefix server run db:setup"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
